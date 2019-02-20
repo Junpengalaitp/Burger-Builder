@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
+import Modal from '../../components/UI/Modal/Modal'
+import OrderSummary from '../../components/Burger/OrderSummray/OrderSummary'
 
 const INGREDIENT_PRICES = {
         salad: 0.5,
@@ -19,7 +21,8 @@ class BurgerBuilder extends Component {
             meat: 0
         },
         totalPrice: 4,
-        purchasable: false
+        purchasable: false,
+        purchasing: false
 
     }  
 
@@ -49,6 +52,19 @@ class BurgerBuilder extends Component {
         this.updatePurchaseState(updatedIngredients)
     }
 
+    purchaseHandler = () => {
+        this.setState({purchasing: true})
+    }
+
+    purchaseCancelHandler = () => {
+        this.setState({purchasing: false})
+    }
+
+    purchaseContinueHandler = () => {
+        alert('You continue!')
+    }
+
+
     removeIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type]
         if (oldCount <= 0) {
@@ -77,12 +93,20 @@ class BurgerBuilder extends Component {
         }
         return (
             <Fragment>
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+                    <OrderSummary
+                         ingredients={this.state.ingredients}
+                         price={this.state.totalPrice}
+                         purchaseCancelled={this.purchaseCancelHandler}
+                         purchaseContinued={this.purchaseContinueHandler}/>
+                </Modal>
                 <Burger ingredients = {this.state.ingredients} />
                 <BuildControls 
                     ingredientAdded = {this.addIngredientHandler}
                     ingredientRemoved = {this.removeIngredientHandler}
                     disabled = {disabledInfo}
                     purchasable = {this.state.purchasable}
+                    ordered = {this.purchaseHandler}
                     price={this.state.totalPrice} />
             </Fragment>
       
