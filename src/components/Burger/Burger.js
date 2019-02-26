@@ -2,7 +2,8 @@ import React from 'react'
 import classes from './Burger.module.css'
 import BurgerIngredient from '../Burger/Burgeringredient/Burgeringredient'
 
-const Burger = (props) => {
+const Burger = ( props ) => {
+    console.log(props)
     let transformedIngredients = Object.keys(props.ingredients)
         .map( igKey => {
             return [...Array(props.ingredients[igKey])].map(( _, i ) => {
@@ -19,7 +20,7 @@ const Burger = (props) => {
     return (
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top" />
-            {transformedIngredients}
+                {transformedIngredients}
             <BurgerIngredient type="bread-bottom" />     
         </div>
   )
