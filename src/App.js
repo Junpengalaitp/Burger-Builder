@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Layout from './components/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import Layout from './hoc/Layout/Layout';
 
 
 class App extends Component {
@@ -13,7 +13,6 @@ class App extends Component {
   //     this.setState({show: false})
   //   }, 5000)
   // }
-
   render() {
     return (
       <div>
