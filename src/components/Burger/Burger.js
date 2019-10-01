@@ -1,13 +1,12 @@
 import React from 'react'
 import classes from './Burger.module.css'
-import BurgerIngradients from './BurgerIngradients.js/BurgerIngradients';
-
+import BurgerIngredients from './BurgerIngredients/BurgerIngredients';
 
 const Burger = (props) => {
     let transformedIngredients = Object.keys(props.ingredients)
         .map(igKey => {
             return [...Array(props.ingredients[igKey])].map((_, i) => {
-                return <BurgerIngradients key={igKey + i} type={igKey} />
+                return <BurgerIngredients key={igKey + i} type={igKey} />
             })
         })
         .reduce((arr, element) => {
@@ -20,9 +19,9 @@ const Burger = (props) => {
     
     return (
         <div className={classes.Burger}>
-            <BurgerIngradients type="bread-top" />
+            <BurgerIngredients type="bread-top" />
             {transformedIngredients}
-            <BurgerIngradients type="bread-bottom" />
+            <BurgerIngredients type="bread-bottom" />
         </div>
     )
 }
