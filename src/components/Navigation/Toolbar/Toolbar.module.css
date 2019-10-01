@@ -15,21 +15,14 @@
 
 .Toolbar nav {
     height: 100%;
-<<<<<<< HEAD
-=======
-    
->>>>>>> 23132e18e5e99ceff2cc754f4ff6ce73fc5cbf16
 }
 
 .Logo {
     height: 80%;
-<<<<<<< HEAD
-=======
 }
 
 @media (max-width: 499px) {
     .DesktopOnly {
         display: none;
     }
->>>>>>> 23132e18e5e99ceff2cc754f4ff6ce73fc5cbf16
 }

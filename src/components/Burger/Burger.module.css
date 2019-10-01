@@ -15,11 +15,8 @@
     }
 }
 
-<<<<<<< HEAD
 @media (min-width: 500px) and (min-height: 401px) {
-=======
-@media (min-width: 500px) and (min-height: 400px) {
->>>>>>> 23132e18e5e99ceff2cc754f4ff6ce73fc5cbf16
+
     .Burger {
         width: 450px;
         height: 400px;
