@@ -3,7 +3,11 @@
     padding: 8px;
     height: 100%;
     box-sizing: border-box;
+<<<<<<< HEAD
     border-radius: 10px;
+=======
+    border-radius: 5px;
+>>>>>>> 23132e18e5e99ceff2cc754f4ff6ce73fc5cbf16
 }
 
 .Logo img {
