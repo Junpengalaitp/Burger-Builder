@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Aux from '../../hoc/Aux/Aux'
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
@@ -17,12 +17,7 @@ const INGREDIENT_PRICES = {
 
 class BurgerBuilder extends Component {
     state = {
-        ingredients: {
-            salad: 0,
-            bacon: 0,
-            cheese: 0,
-            meat: 0
-        },
+        ingredients: null,
         totalPrice: 4,
         purchasable: false,
         purchasing: false,
@@ -31,12 +26,13 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount () {
-        axios.get('/ingredient')
+        axios.get('/ingredients')
             .then(response => {
                 this.setState({ingredients: response.data})
             })
             .catch(error => {
                 this.setState({error: true})
+                console.log(this.state.error)
             })
     }
 
@@ -106,7 +102,7 @@ class BurgerBuilder extends Component {
         }
         axios.post('/orders', order)
             .then(response => {
-                this.setState({loading: true,
+                this.setState({loading: false,
                                purchasing: false})
             })
             .catch(error => {
@@ -125,11 +121,11 @@ class BurgerBuilder extends Component {
         }
 
         let orderSummary = null;
-        let burger = this.state.error ? <p>Ingredients can't be loaded!</p> : <Spinner />
+        let burger = this.state.error ? <h1>Ingredients can't be loaded!</h1> : <Spinner />
 
         if (this.state.ingredients) {
             burger = (
-                <Fragment>
+                <Aux>
                     <Burger ingredients={this.state.ingredients}/>
                     <BuildControls 
                         ingredientAdded={this.addIngredientHandler}
@@ -138,7 +134,7 @@ class BurgerBuilder extends Component {
                         purchasable={this.state.purchasable}
                         price={this.state.totalPrice}
                         ordered={this.purchaseHandler} />
-                </Fragment>)
+                </Aux>)
             orderSummary = <OrderSummary ingredients={this.state.ingredients} purchaseCancelled={this.purchaseCancelHandler}
             purchaseContinued={this.purchaseContinuedHandler} price={this.state.totalPrice} />
         }
