@@ -27,14 +27,14 @@ class BurgerBuilder extends Component {
 
     componentDidMount () {
         console.log(this.props)
-        axios.get('/ingredients')
-            .then(response => {
-                this.setState({ingredients: response.data})
-            })
-            .catch(error => {
-                this.setState({error: true})
-                console.log(this.state.error)
-            })
+        // axios.get('/ingredients')
+        //     .then(response => {
+        //         this.setState({ingredients: response.data})
+        //     })
+        //     .catch(error => {
+        //         this.setState({error: true})
+        //         console.log(this.state.error)
+        //     })
     }
 
     addIngredientHandler = (type) => {
