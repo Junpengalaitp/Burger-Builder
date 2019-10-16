@@ -62,10 +62,11 @@ export const fetchOrdersStart = () => {
     }
 }
 
-export const fetchOrders = (token) => {
+export const fetchOrders = (token, userId) => {
     return dispatch => {
         dispatch(fetchOrdersStart())
-        Axios.get('https://react-my-burger-52007.firebaseio.com/orders.json?auth=' + token)
+        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"'
+        Axios.get('https://react-my-burger-52007.firebaseio.com/orders.json' + queryParams)
             .then(res => {
                 const fetchedOrders = []
                 for (let key in res.data) {
