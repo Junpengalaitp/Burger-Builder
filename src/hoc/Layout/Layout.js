@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import Auxiliary from '../Auxiliary/Auxiliary'
+import React, { useState, Fragment } from 'react'
 import classes from './Layout.module.css'
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
@@ -21,17 +20,17 @@ const layout = props => {
 
 
     return (
-    <Auxiliary>
-        <Toolbar 
-            isAuth={props.isAuthenticated}
-            drawerToggleClicked={sideDrawerToggleHandler} />
-        <SideDrawer 
-            isAuth={props.isAuthenticated}
-            open={sideDrawerIsVisble} closed={sideDrawerClosedHandler} />
-        <main className={classes.Content}>
-            {props.children}
-        </main>
-    </Auxiliary>
+        <Fragment>
+            <Toolbar 
+                isAuth={props.isAuthenticated}
+                drawerToggleClicked={sideDrawerToggleHandler} />
+            <SideDrawer 
+                isAuth={props.isAuthenticated}
+                open={sideDrawerIsVisble} closed={sideDrawerClosedHandler} />
+            <main className={classes.Content}>
+                {props.children}
+            </main>
+        </Fragment>
     )
 }
 

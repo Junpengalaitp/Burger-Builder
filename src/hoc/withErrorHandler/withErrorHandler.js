@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import Auxiliary from '../Auxiliary/Auxiliary';
+import React, { useState, useEffect, Fragment } from 'react'
 import Modal from '../../components/UI/Modal/Modal';
 
 const withErrorHandler = (WarappedComponent, axios) => {
@@ -29,14 +28,14 @@ const withErrorHandler = (WarappedComponent, axios) => {
 
 
         return (
-            <Auxiliary>
+            <Fragment>
                 <Modal 
                     show={error}
                     modalClosed={errorConfirmedHandler}>
                     {error ? error.message : null}
                 </Modal>
                 <WarappedComponent {...props} />
-            </Auxiliary>
+            </Fragment>
         )
     }
 }
