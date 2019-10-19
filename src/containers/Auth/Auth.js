@@ -120,7 +120,7 @@ const Auth = props => {
                 <Button 
                     clicked={switchAuthModeHandler}
                     btnType='Danger'>
-                        SWITCH TO {isSignUp ? 'SIGN IN': 'SIGN UP'}
+                        SWITCH TO {isSignUp ? 'SIGN UP': 'SIGN IN'}
                 </Button>
             </div>
         )
